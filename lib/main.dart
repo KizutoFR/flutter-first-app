@@ -79,33 +79,46 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: CustomScrollView(
-  slivers: <Widget>[   
-    SliverGrid(
-      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: 200.0,
-        mainAxisSpacing: 10.0,
-        crossAxisSpacing: 10.0,
-        childAspectRatio: 4.0,
-      ),
-      delegate: SliverChildBuilderDelegate(
-        (BuildContext context, int index) {
-          return Container(
-            alignment: Alignment.center,
-            color: Colors.teal[100 * (index % 9)],
-            child: Text('Grid Item $index'),
-          );
-        },
-        childCount: 20,
-      ),
+      slivers: <Widget>[   
+        SliverList( //affichage en liste vertical
+          delegate: SliverChildBuilderDelegate( //  boucle x fois le constructeur
+            (BuildContext context, int index) { // constructeur = créer des objets a partir d'une class
+              return SizedBox ( // boite ou l'on peut changer la taille comme on veut
+                width: 300,
+                height: 400,
+                child: Card (   //widget card (peut contenir qu'un child)
+                  margin: const EdgeInsets.all(10), //espace entre les cards
+                  color: Colors.white,
+                  elevation: 10, //pronfondeur du survol
+                  child: Column(  //widget card(peut contenir plusieurs children)
+                    mainAxisSize: MainAxisSize.min, //la colonne se rétrécit pour s'adapter (fit) aux children
+                    children: <Widget>[ // tableau de widget
+                      Image.network("https://www.citationbonheur.fr/wp-content/uploads/2018/09/L_influence_du_paysage_sur_le_bonheur.jpg"), // affiche une image avce url (peut contenir plusieur option tel que width, height, opacity, box-fit ..)
+                      const ListTile( // une class qui contient généralement 1 à 3 ligne de texte ainsi qu'une icône de début ou de fin.
+                        leading: Icon (
+                            Icons.album,
+                            color: Colors.cyan,
+                            size: 45
+                        ),
+                        title: Text(
+                          "Let's Talk About Love",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        subtitle: Text('Modern Talking Album'),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+
+            },
+            childCount: 50,
+          ),
+        ),
+        
+      ],
     ),
-    
-  ],
-),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+       // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
