@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: CustomScrollView(
-      slivers: <Widget>[   
+      slivers: <Widget>[    // partie d'une zone de défilement (scroll) qui peut être personnalisé
         SliverList( //affichage en liste verticale
           delegate: SliverChildBuilderDelegate( //  boucle x fois le constructeur
             (BuildContext context, int index) { // constructeur = créer des objets a partir d'une class
