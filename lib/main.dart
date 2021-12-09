@@ -80,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: CustomScrollView(
       slivers: <Widget>[   
-        SliverList( //affichage en liste vertical
+        SliverList( //affichage en liste verticale
           delegate: SliverChildBuilderDelegate( //  boucle x fois le constructeur
             (BuildContext context, int index) { // constructeur = créer des objets a partir d'une class
               return SizedBox ( // boite ou l'on peut changer la taille comme on veut
@@ -88,15 +88,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 400,
                 child: Card (   //widget card (peut contenir qu'un child)
                   margin: const EdgeInsets.all(10), //espace entre les cards
-                  color: Colors.white,
+                  color: Colors.white, // couleur de la carte
                   elevation: 10, //pronfondeur du survol
-                  child: Column(  //widget card(peut contenir plusieurs children)
+                  child: Column(  //widget Colum (peut contenir plusieurs children)
                     mainAxisSize: MainAxisSize.min, //la colonne se rétrécit pour s'adapter (fit) aux children
                     children: <Widget>[ // tableau de widget
                       Image.network("https://www.citationbonheur.fr/wp-content/uploads/2018/09/L_influence_du_paysage_sur_le_bonheur.jpg"), // affiche une image avce url (peut contenir plusieur option tel que width, height, opacity, box-fit ..)
                       const ListTile( // une class qui contient généralement 1 à 3 ligne de texte ainsi qu'une icône de début ou de fin.
                         leading: Icon (
-                            Icons.album,
+                            Icons.album,  // Icone prit dans la librairie flutter (Icons)
                             color: Colors.cyan,
                             size: 45
                         ),
